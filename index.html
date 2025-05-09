@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mac vs Windows Keyboard Learning</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #0077cc;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #005fa3;
+        }
+
+        .section {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                font-size: 0.95rem;
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <br><br><br>
+    <section>
+        <div class="container">
+            <h1>Click to Activate: Effortless Mac & Windows Shortcuts for Smoother, Faster Workflow!  </h1>
+            <div class="buttons">
+                <a href="./mac.html"><button class="btn" >Mac Keyboard</button></a>
+               <a href="./window.html"> <button class="btn" >Windows Keyboard</button></a>
+            </div>
+
+            <!-- Mac Section -->
+          
+
+            <!-- Windows Section -->
+            
+        </div>
+    </section>
+<br><br><br><br>
+    <section>
+        <div class="container">
+            <h1>Click That Button: Master Mac & Windows Keyboard Shortcuts: Boost Your Productivity with Easy Learning!</h1>
+            <div class="buttons">
+                <button class="btn" onclick="showSection('mac')">Mac Keyboard</button>
+                <button class="btn" onclick="showSection('windows')">Windows Keyboard</button>
+            </div>
+
+            <!-- Mac Section -->
+            <div id="mac" class="section">
+                <h2>Windows Keyboard Shortcuts</h2> 
+                <p>
+                    Mac uses the <strong>Command</strong> key instead of the <strong>Control</strong> key. Some common
+                    shortcuts include:
+                    <br><br>
+                    <strong>Ctrl + C</strong> – Copy<br>
+                    <strong>Ctrl + X</strong> – Cut<br>
+                    <strong>Ctrl + V</strong> – Paste<br>
+                    <strong>Ctrl + Z</strong> – Undo<br>
+                    <strong>Ctrl + Y</strong> – Redo<br>
+                    <strong>Ctrl + A</strong> – Select All<br>
+                    <strong>Ctrl + S</strong> – Save<br>
+                    <strong>Ctrl + P</strong> – Print<br>
+                    <strong>Alt + Tab</strong> – Switch between open apps<br>
+                    <strong>Alt + F4</strong> – Close the active window<br>
+                    <strong>Windows + D</strong> – Show or hide the desktop<br>
+                    <strong>Windows + L</strong> – Lock the computer<br>
+                    <strong>Windows + E</strong> – Open File Explorer<br>
+                    <strong>Windows + R</strong> – Open Run dialog<br>
+                    <strong>Windows + I</strong> – Open Settings<br>
+                    <strong>Windows + M</strong> – Minimize all windows<br>
+                    <strong>Ctrl + Alt + Del</strong> – Open Task Manager or security options<br>
+                    <strong>Ctrl + Shift + Esc</strong> – Open Task Manager directly<br>
+                    <strong>Windows + Tab</strong> – Open Task View<br>
+                    <strong>Alt + Enter</strong> – Show properties of the selected item<br>
+                    <strong>Ctrl + F</strong> – Open Find dialog in apps or browsers<br>
+                    <strong>Ctrl + N</strong> – Open a new window in most apps<br>
+                    <strong>Ctrl + W</strong> – Close the current window or tab<br>
+                    <strong>Ctrl + T</strong> – Open a new tab in browsers<br>
+                    <strong>Windows + P</strong> – Project to another screen (for multiple monitors)<br>
+                    <strong>Windows + U</strong> – Open Ease of Access Center<br>
+                    <strong>Windows + X</strong> – Open Quick Link menu (Start, Device Manager, etc.)<br>
+                    <strong>Windows + V</strong> – Open Clipboard history (requires enabling)<br>
+                    <strong>Windows + Shift + S</strong> – Take a screenshot (snip tool)<br>
+                    
+                </p>
+            </div>
+
+            <!-- Windows Section -->
+            <div id="windows" class="section">
+              <h2>Mac Keyboard Shortcuts</h2>
+                <p>
+                    Windows relies on the <strong>Control</strong> and <strong>Windows</strong> keys. Common shortcuts
+                    include:
+                    <br><br>
+                    <strong>Command + C</strong> – Copy<br>
+                    <strong>Command + X</strong> – Cut<br>
+                    <strong>Command + V</strong> – Paste<br>
+                    <strong>Command + Z</strong> – Undo<br>
+                    <strong>Command + Shift + Z</strong> – Redo<br>
+                    <strong>Command + A</strong> – Select All<br>
+                    <strong>Command + S</strong> – Save<br>
+                    <strong>Command + P</strong> – Print<br>
+                    <strong>Command + W</strong> – Close the current window<br>
+                    <strong>Command + Q</strong> – Quit the active application<br>
+                    <strong>Command + Tab</strong> – Switch between open apps<br>
+                    <strong>Command + H</strong> – Hide the active window<br>
+                    <strong>Command + M</strong> – Minimize the active window<br>
+                    <strong>Command + Space</strong> – Open Spotlight Search<br>
+                    <strong>Command + Option + Esc</strong> – Force Quit Applications<br>
+                    <strong>Command + Shift + 3</strong> – Capture a screenshot of the entire screen<br>
+                    <strong>Command + Shift + 4</strong> – Capture a selected area of the screen<br>
+                    <strong>Command + Shift + 5</strong> – Open Screenshot options<br>
+                    <strong>Command + N</strong> – Open a new window in Finder or browsers<br>
+                    <strong>Command + T</strong> – Open a new tab in browsers<br>
+                    <strong>Command + R</strong> – Reload the current page in browsers<br>
+                    <strong>Command + F</strong> – Open Find dialog in apps or browsers<br>
+                    <strong>Command + L</strong> – Highlight the URL in the browser’s address bar<br>
+                    <strong>Command + Option + M</strong> – Minimize all windows of the active app<br>
+                    <strong>Command + Shift + N</strong> – Create a new folder in Finder<br>
+                    <strong>Command + , (comma)</strong> – Open preferences for the active app<br>
+                    <strong>Control + Command + Q</strong> – Lock the screen<br>
+                    <strong>Control + Option + Command + Power</strong> – Force a restart<br>
+                    <strong>Command + Shift + Option + V</strong> – Paste and match the style (in text editors)<br>
+                    <strong>Command + 1, 2, 3...</strong> – Switch between tabs in browsers or Finder<br>
+                    
+                </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
