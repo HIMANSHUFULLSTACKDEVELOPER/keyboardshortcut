@@ -15,7 +15,7 @@
         }
 
         .keyboard-container {
-            width: 850px;
+            width: 1150px;
             padding: 20px;
             background-color: #e0e0e0;
             border-radius: 10px;
@@ -112,6 +112,7 @@
         <h1 style="text-align: center;">Mac KeyBoard</h1>
 
         <div class="keys"> <a style="text-decoration: none;"  href="./index.html"> Back </a></div>
+        <br>
 
                 <textarea class="output" placeholder="click your shortcut key button "></textarea>
                 <div class="keyboard">
@@ -251,29 +252,29 @@
                 if (val === 'Meta') {
                     pressedKeys.add('Meta');
                 } else if (val === 'c' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + C = Copy ';
+                    output.value += 'Command + C = Copy ';
                     pressedKeys.clear();
                 }
                 else if (val === 'v' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + V = Paste ';
+                    output.value += 'Command + V = Paste ';
                     pressedKeys.clear();
                 } else if (val === 'x' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + X = cut ';
+                    output.value += 'Command + X = cut ';
                     pressedKeys.clear();
                 } else if (val === 'a' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + A = Select All ';
+                    output.value += 'Command + A = Select All ';
                     pressedKeys.clear();
                 } else if (val === 's' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + S = Save ';
+                    output.value += 'Command + S = Save ';
                     pressedKeys.clear();
                 } else if (val === 'z' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + Z = Undo ';
+                    output.value += 'Command + Z = Undo ';
                     pressedKeys.clear();
                 } else if (val === 'f' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + F  =  Find';
+                    output.value += 'Command + F  =  Find';
                     pressedKeys.clear();
                 } else if (val === 'p' && pressedKeys.has('Meta')) {
-                    output.value += 'Window + P = Print ';
+                    output.value += 'Command + P = Print ';
                     pressedKeys.clear();
                 } else if (val === 'f' && pressedKeys.has('Meta')) {
                     output.value += 'Cmd (⌘) + F = Find ';
@@ -288,13 +289,13 @@
                     output.value += 'Cmd (⌘) + Q = Quit App ';
                     pressedKeys.clear();
                 } else if (val === 'w' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + W = Close Window ';
+                    output.value += 'Cmd (⌘) + W = Close Command ';
                     pressedKeys.clear();
                 } else if (val === 'h' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + H = Hide Window ';
+                    output.value += 'Cmd (⌘) + H = Hide Command ';
                     pressedKeys.clear();
                 } else if (val === 'm' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + M = Minimize Window ';
+                    output.value += 'Cmd (⌘) + M = Minimize Command ';
                     pressedKeys.clear();
                 } else if (val === ' ' && pressedKeys.has('Meta')) {
                     output.value += 'Cmd (⌘) + Space = Spotlight Search ';
@@ -315,7 +316,7 @@
                     output.value += 'Cmd (⌘) + Shift + 5 = Screen Recording & Screenshot Options ';
                     pressedKeys.clear();
                 } else if (val === 'm' && pressedKeys.has('Meta') && event.altKey) {
-                    output.value += 'Cmd (⌘) + Option + M = Minimize all windows ';
+                    output.value += 'Cmd (⌘) + Option + M = Minimize all Commands ';
                     pressedKeys.clear();
                 } else if (val === 'n' && pressedKeys.has('Meta') && event.shiftKey) {
                     output.value += 'Cmd (⌘) + Shift + N = New Folder ';
@@ -375,7 +376,7 @@
                     output.value += 'Cmd (⌘) + F = Find ';
                     pressedKeys.clear();
                 } else if (val === '' && pressedKeys.has('Meta')) {
-                    output.value += 'Window +  =  ';
+                    output.value += 'Command +  =  ';
                     pressedKeys.clear();
                 }
                 else if (val === 'Backspace') {
