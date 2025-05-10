@@ -9,13 +9,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
         }
 
         .keyboard-container {
-            width: 999px;
+            width: 1199px;
             padding: 20px;
             background-color: #e0e0e0;
             border-radius: 10px;
@@ -50,7 +50,9 @@
             padding: 0 10px;
             transition: all 0.1s;
             position: relative;
-        }.keys {
+        }
+
+        .keys {
             background-color: #ffffff;
             border: 1px solid #cccccc;
             border-radius: 4px;
@@ -95,7 +97,7 @@
             width: 100%;
             height: 100px;
             margin-bottom: 20px;
-            padding: 10\px;
+            padding: 10px;
             font-size: 18px;
             border-radius: 5px;
             border: 1px solid #cccccc;
@@ -107,33 +109,35 @@
 </head>
 
 <body>
- 
-
     <div class="keyboard-container">
-        <h1 style="text-align: center;">Mac KeyBoard</h1>
+        <h1 style="text-align: center;">Mac Keyboard</h1>
 
-        <div class="keys"> <a style="text-decoration: none;"  href="./index.html"> Back </a></div>
+        <div class="keys"> <a style="text-decoration: none;" href="./index.html"> Back </a></div>
         <br>
 
-                <textarea class="output" placeholder="click your shortcut key button "></textarea>
-                <div class="keyboard">
+        <textarea class="output" placeholder="Click your shortcut key buttons"></textarea>
+        <div class="keyboard">
             <div class="row">
                 <div class="key key-special" data-key="Escape">Esc</div>
-                <div class="key" data-key="F1">F1</div>
-                <div class="key" data-key="F2">F2</div>
-                <div class="key" data-key="F3">F3</div>
-                <div class="key" data-key="F4">F4</div>
-                <div class="key" data-key="F5">F5</div>
-                <div class="key" data-key="F6">F6</div>
-                <div class="key" data-key="F7">F7</div>
-                <div class="key" data-key="F8">F8</div>
-                <div class="key" data-key="F9">F9</div>
-                <div class="key" data-key="F10">F10</div>
-                <div class="key" data-key="F11">F11</div>
-                <div class="key" data-key="F12">F12</div>
+                <div class="key" data-key="1">!</div>
+                <div class="key" data-key="2">@</div>
+                <div class="key" data-key="3">#</div>
+                <div class="key" data-key="4">$</div>
+                <div class="key" data-key="5">%</div>
+                <div class="key" data-key="6">^</div>
+                <div class="key" data-key="7">&</div>
+                <div class="key" data-key="8">*</div>
+                <div class="key" data-key="9">(</div>
+                <div class="key" data-key="0">)</div>
+                <div class="key" data-key="-">Prt Sc</div>
+                <div class="key" data-key="Insert">Insert</div>
+                <div class="key" data-key="Delete">Delete</div>
             </div>
+
             <div class="row">
-                <div class="key key-special" data-key="~">~</div>
+                <div class="key key-special" data-key="`">~
+                    <span style="margin-top: -15px;">`</span>
+                </div>
                 <div class="key" data-key="1">1</div>
                 <div class="key" data-key="2">2</div>
                 <div class="key" data-key="3">3</div>
@@ -146,7 +150,8 @@
                 <div class="key" data-key="0">0</div>
                 <div class="key" data-key="-">-</div>
                 <div class="key" data-key="=">=</div>
-                <div class="key key-wide key-special" data-key="Backspace">Backspace</div>
+                <div class="key key-wide key-special" data-key="Backspace">
+                    Backspace</div>
             </div>
             <div class="row">
                 <div class="key key-wide key-special" data-key="Tab">Tab</div>
@@ -160,12 +165,14 @@
                 <div class="key" data-key="i">I</div>
                 <div class="key" data-key="o">O</div>
                 <div class="key" data-key="p">P</div>
-                <div class="key" data-key="[">[</div>
-                <div class="key" data-key="]">]</div>
-                <div class="key" data-key="\\">\\</div>
+                <div class="key" data-key="[">
+                    <span style="margin-top: -15px;">{</span> [
+                </div>
+                <div class="key" data-key="]"><span style="margin-top: -15px;">}</span>]</div>
+                <div class="key" data-key="\"><span style="margin-top: -15px;">|</span>\</div>
             </div>
             <div class="row">
-                <div class="key key-wide key-special" data-key="CapsLock">Caps</div>
+                <div class="key key-wide key-special" data-key="CapsLock">CapsLock</div>
                 <div class="key" data-key="a">A</div>
                 <div class="key" data-key="s">S</div>
                 <div class="key" data-key="d">D</div>
@@ -175,8 +182,12 @@
                 <div class="key" data-key="j">J</div>
                 <div class="key" data-key="k">K</div>
                 <div class="key" data-key="l">L</div>
-                <div class="key" data-key=";">;</div>
-                <div class="key" data-key="'">'</div>
+                <div class="key" data-key=";">
+                    <span style="margin-top: -15px;" data-key="Colon">:</span>;
+                </div>
+                <div class="key" data-key="'">
+                    <span style="margin-top: -15px;" data-key="Quotation Mark">"</span>'
+                </div>
                 <div class="key key-wide key-special" data-key="Enter">Enter</div>
             </div>
             <div class="row">
@@ -188,10 +199,14 @@
                 <div class="key" data-key="b">B</div>
                 <div class="key" data-key="n">N</div>
                 <div class="key" data-key="m">M</div>
-                <div class="key" data-key=",">,</div>
-                <div class="key" data-key=".">.</div>
-                <div class="key" data-key="/">/</div>
+                <div class="key" data-key=","><span style="margin-top: -15px;">&lt;</span>,</div>
+                <div class="key" data-key="."><span style="margin-top: -15px;">&gt;</span>.</div>
+                <div class="key" data-key="/">
+                    <span style="margin-top: -15px;">?</span>
+                    /
+                </div>
                 <div class="key key-extra-wide key-special" data-key="Shift">Shift</div>
+                <div class="key" data-key="ArrowUp">↑</div>
             </div>
             <div class="row">
                 <div class="key key-wide key-special" data-key="Control">Ctrl</div>
@@ -201,6 +216,9 @@
                 <div class="key key-wide key-special" data-key="Alt">Alt</div>
                 <div class="key key-wide key-special" data-key="Meta">⌘</div>
                 <div class="key key-wide key-special" data-key="Control">Ctrl</div>
+                <div class="key" data-key="ArrowLeft">←</div>
+                <div class="key" data-key="ArrowDown">↓</div>
+                <div class="key" data-key="ArrowRight">→</div>
             </div>
         </div>
     </div>
@@ -210,36 +228,124 @@
         const keys = document.querySelectorAll('.key');
         let pressedKeys = new Set();
 
-        // Detect physical key press
+        // Key combination definitions
+        const keyCombinations = {
+            "Meta+c": "Copy",
+            "Meta+v": "Paste",
+            "Shift+1": "	Exclamation Mark",
+           
+            "Shift+2": "At Sign",
+            "Shift+3": "Hash",
+            "Shift+4": "Dollar Sign",
+            "Shift+5": "Percent Sign",
+            "Shift+6": "Caret",
+            "Shift+7": "Ampersand",
+            "Shift+8": "Asterisk",
+            "Shift+9": "Left Parenthesis",
+            "Shift+0": "Right Parenthesis",
+"Shift+;": ": Colon",
+"Shift+'": "Quotation Mark",
+"Shift+,": "< Less Than",
+"Shift+.": "> Greater Than",
+            "Shift+/": "? Question Mark",
+            "Meta+z": "Undo",
+            "Meta+n": "New Window",
+            "Meta+x": "Cut", "Meta+x": "Cut",
+            "Meta+a": "Select All",
+            "Meta+s": "Save",
+            "Meta+z": "Undo",
+            "Meta+f": "Find",
+            "Meta+p": "Print",
+            "Meta+q": "Quit App",
+            "Meta+w": "Close Window",
+
+            "Meta+h": "Hide Window",
+            "Meta+m": "Minimize Window",
+            "Meta+ ": "Spotlight Search",
+            "Meta+Alt+Escape": "Force Quit",
+            "Meta+Tab": "Switch between apps",
+            "Meta+Shift+3": "Capture Full Screen",
+            "Meta+Shift+4": "Capture Partial Screen",
+            "Meta+Shift+5": "Screen Recording & Screenshot Options",
+            "Meta+Alt+m": "Minimize all Windows",
+            "Meta+Shift+n": "New Folder",
+            "Meta+i": "Get Info",
+            "Meta+d": "Duplicate",
+            "Meta+b": "Bold",
+            "Meta+u": "Underline",
+            "Meta+t": "Show/Hide Fonts",
+            "Meta+ArrowUp": "Go to the top of the page",
+            "Meta+ArrowDown": "Go to the bottom of the page",
+            "Meta+ArrowLeft": "Move cursor to the beginning of the line",
+            "Meta+ArrowRight": "Move cursor to the end of the line",
+            "Meta+l": "Focus on URL bar",
+            "Meta+r": "Refresh Page",
+            "Meta+Shift+t": "Reopen last closed tab",
+            "Control+Meta+q": "Lock Screen",
+            "Meta+Alt+d": "Show/Hide the Dock",
+            "Meta+Shift+g": "Go to Folder in Finder",
+            "Meta+Alt+h": "Hide all apps except the current one"
+        };
+
+        // Function to get the current key combination
+        function getCurrentCombination() {
+            const sortedKeys = Array.from(pressedKeys).sort();
+            return sortedKeys.join('+');
+        }
+
+        // Function to check if current combination matches any defined shortcuts
+        function checkCombination() {
+            const currentCombo = getCurrentCombination();
+            
+            for (let combo in keyCombinations) {
+                // Check if the current combo matches or is a subset of a defined combo
+                const comboKeys = combo.split('+');
+                const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
+                
+                if (allKeysPresent && comboKeys.length === pressedKeys.size) {
+                    return keyCombinations[combo];
+                }
+            }
+            
+            return null;
+        }
+
+        // Physical keyboard
         window.addEventListener('keydown', (e) => {
-            pressedKeys.add(e.key);
+            // Normalize key names
+            let keyName = e.key;
+            if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
+            if (keyName === 'Option') keyName = 'Alt';
+            
+            pressedKeys.add(keyName);
 
             keys.forEach(k => {
-                if (k.dataset.key.toLowerCase() === e.key.toLowerCase()) {
+                if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
                     k.classList.add('active');
                 }
             });
 
-            if ((pressedKeys.has('Meta') || pressedKeys.has('OS')) && pressedKeys.has('c')) {
+            const shortcutAction = checkCombination();
+            if (shortcutAction) {
                 e.preventDefault();
-                output.value += 'Copy ';
+                output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
             }
 
-            if ((pressedKeys.has('Meta') || pressedKeys.has('OS')) && pressedKeys.has('v')) {
-                e.preventDefault();
-                output.value += 'Paste ';
-            }
-
-            if (e.key === 'Backspace') {
+            if (e.key === 'Backspace' && pressedKeys.size === 1) {
                 output.value = '';
             }
         });
 
         window.addEventListener('keyup', (e) => {
-            pressedKeys.delete(e.key);
+            // Normalize key names
+            let keyName = e.key;
+            if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
+            if (keyName === 'Option') keyName = 'Alt';
+            
+            pressedKeys.delete(keyName);
 
             keys.forEach(k => {
-                if (k.dataset.key.toLowerCase() === e.key.toLowerCase()) {
+                if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
                     k.classList.remove('active');
                 }
             });
@@ -247,145 +353,55 @@
 
         // Virtual keyboard clicks
         keys.forEach(key => {
-            key.addEventListener('click', () => {
+            key.addEventListener('mousedown', () => {
                 let val = key.dataset.key;
-
+                key.classList.add('active');
+                
+                // For special case handling of keys
                 if (val === 'Meta') {
                     pressedKeys.add('Meta');
-                } else if (val === 'c' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + C = Copy ';
-                    pressedKeys.clear();
-                }
-                else if (val === 'v' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + V = Paste ';
-                    pressedKeys.clear();
-                } else if (val === 'x' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + X = cut ';
-                    pressedKeys.clear();
-                } else if (val === 'a' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + A = Select All ';
-                    pressedKeys.clear();
-                } else if (val === 's' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + S = Save ';
-                    pressedKeys.clear();
-                } else if (val === 'z' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + Z = Undo ';
-                    pressedKeys.clear();
-                } else if (val === 'f' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + F  =  Find';
-                    pressedKeys.clear();
-                } else if (val === 'p' && pressedKeys.has('Meta')) {
-                    output.value += 'Command + P = Print ';
-                    pressedKeys.clear();
-                } else if (val === 'f' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + F = Find ';
-                    pressedKeys.clear();
-                } else if (val === 's' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + S = Save ';
-                    pressedKeys.clear();
-                } else if (val === 'p' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + P = Print ';
-                    pressedKeys.clear();
-                } else if (val === 'q' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Q = Quit App ';
-                    pressedKeys.clear();
-                } else if (val === 'w' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + W = Close Command ';
-                    pressedKeys.clear();
-                } else if (val === 'h' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + H = Hide Command ';
-                    pressedKeys.clear();
-                } else if (val === 'm' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + M = Minimize Command ';
-                    pressedKeys.clear();
-                } else if (val === ' ' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Space = Spotlight Search ';
-                    pressedKeys.clear();
-                } else if (val === 'Escape' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Option + Esc = Force Quit ';
-                    pressedKeys.clear();
-                } else if (val === 'Tab' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Tab = Switch between apps ';
-                    pressedKeys.clear();
-                } else if (val === '3' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + 3 = Capture Full Screen ';
-                    pressedKeys.clear();
-                } else if (val === '4' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + 4 = Capture Partial Screen ';
-                    pressedKeys.clear();
-                } else if (val === '5' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + 5 = Screen Recording & Screenshot Options ';
-                    pressedKeys.clear();
-                } else if (val === 'm' && pressedKeys.has('Meta') && event.altKey) {
-                    output.value += 'Cmd (⌘) + Option + M = Minimize all Commands ';
-                    pressedKeys.clear();
-                } else if (val === 'n' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + N = New Folder ';
-                    pressedKeys.clear();
-                } else if (val === 'i' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + I = Get Info ';
-                    pressedKeys.clear();
-                } else if (val === 'd' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + D = Duplicate ';
-                    pressedKeys.clear();
-                } else if (val === 'b' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + B = Bold ';
-                    pressedKeys.clear();
-                } else if (val === 'i' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + I = Italic ';
-                    pressedKeys.clear();
-                } else if (val === 'u' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + U = Underline ';
-                    pressedKeys.clear();
-                } else if (val === 't' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + T = Show/Hide Fonts ';
-                    pressedKeys.clear();
-                } else if (val === 'up' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Arrow Up = Go to the top of the page ';
-                    pressedKeys.clear();
-                } else if (val === 'down' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Arrow Down = Go to the bottom of the page ';
-                    pressedKeys.clear();
-                } else if (val === 'left' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Arrow Left = Move cursor to the beginning of the line ';
-                    pressedKeys.clear();
-                } else if (val === 'right' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + Arrow Right = Move cursor to the end of the line ';
-                    pressedKeys.clear();
-                } else if (val === 'l' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + L = Focus on URL bar ';
-                    pressedKeys.clear();
-                } else if (val === 'r' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + R = Refresh Page ';
-                    pressedKeys.clear();
-                } else if (val === 't' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + T = Reopen last closed tab ';
-                    pressedKeys.clear();
-                } else if (val === 'ctrl' && pressedKeys.has('Meta')) {
-                    output.value += 'Ctrl + Cmd (⌘) + Q = Lock Screen ';
-                    pressedKeys.clear();
-                } else if (val === 'd' && pressedKeys.has('Meta') && event.altKey) {
-                    output.value += 'Cmd (⌘) + Option + D = Show/Hide the Dock ';
-                    pressedKeys.clear();
-                } else if (val === 'g' && pressedKeys.has('Meta') && event.shiftKey) {
-                    output.value += 'Cmd (⌘) + Shift + G = Go to Folder in Finder ';
-                    pressedKeys.clear();
-                } else if (val === 'h' && pressedKeys.has('Meta') && event.optionKey) {
-                    output.value += 'Cmd (⌘) + Option + H = Hide all apps except the current one ';
-                    pressedKeys.clear();
-                } else if (val === 'f' && pressedKeys.has('Meta')) {
-                    output.value += 'Cmd (⌘) + F = Find ';
-                    pressedKeys.clear();
-                } else if (val === '' && pressedKeys.has('Meta')) {
-                    output.value += 'Command +  =  ';
-                    pressedKeys.clear();
-                }
-                else if (val === 'Backspace') {
-                    output.value = '';
-                } else if (val === ' ') {
-                    output.value = '';
+                } else if (val === 'Alt') {
+                    pressedKeys.add('Alt');
+                } else if (val === 'Control') {
+                    pressedKeys.add('Control');
+                } else if (val === 'Shift') {
+                    pressedKeys.add('Shift');
                 } else {
-                    output.value += val;
+                    pressedKeys.add(val);
+                }
+                
+                const shortcutAction = checkCombination();
+                if (shortcutAction) {
+                    output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
+                } else if (val === 'Backspace' && pressedKeys.size === 1) {
+                    output.value = '';
+                } else if (pressedKeys.size === 1) {
+                    output.value = val;
+                }
+            });
+            
+            key.addEventListener('mouseup', () => {
+                let val = key.dataset.key;
+                key.classList.remove('active');
+                
+                // Special case for modifier keys - keep them active until clicked again
+                if (val !== 'Meta' && val !== 'Alt' && val !== 'Control' && val !== 'Shift') {
+                    pressedKeys.delete(val);
+                }
+            });
+            
+            // Double-click to toggle modifier keys
+            key.addEventListener('dblclick', () => {
+                let val = key.dataset.key;
+                
+                if (val === 'Meta' || val === 'Alt' || val === 'Control' || val === 'Shift') {
+                    if (pressedKeys.has(val)) {
+                        pressedKeys.delete(val);
+                        key.classList.remove('active');
+                    } else {
+                        pressedKeys.add(val);
+                        key.classList.add('active');
+                    }
                 }
             });
         });
