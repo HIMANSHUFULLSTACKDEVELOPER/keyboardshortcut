@@ -233,7 +233,7 @@
             "Meta+c": "Copy",
             "Meta+v": "Paste",
             "Shift+1": "	Exclamation Mark",
-           
+
             "Shift+2": "At Sign",
             "Shift+3": "Hash",
             "Shift+4": "Dollar Sign",
@@ -243,11 +243,23 @@
             "Shift+8": "Asterisk",
             "Shift+9": "Left Parenthesis",
             "Shift+0": "Right Parenthesis",
-"Shift+;": ": Colon",
-"Shift+'": "Quotation Mark",
-"Shift+,": "< Less Than",
-"Shift+.": "> Greater Than",
-            "Shift+/": "? Question Mark",
+            "Shift+;": ": Colon",
+            "Shift+'": "Quotation Mark",
+            "Shift+,": "< + Less Than",
+            "Shift+.": ">+ Greater Than",
+           "Shift+[": "[+ Left Brace",
+            "Shift+]": "]+ Right Brace",
+            "Shift+\\": "| + Pipe",
+            "Shift+ArrowUp": "Select Text Up",
+            "Shift+ArrowDown": "Select Text Down",
+            "Shift+ArrowLeft": "Select Text Left",
+            "Shift+ArrowRight": "Select Text Right",
+            "Shift+Tab": "Select Previous Field",
+            "Shift+Control+ArrowUp": "Select to the Top",
+            "Shift+Control+ArrowDown": "Select to the Bottom",
+            "Shift+Control+ArrowLeft": "Select to the Beginning of the Line",
+            "Shift+Control+ArrowRight": "Select to the End of the Line",
+            "Shift+Control+Home": "Select to the Beginning of the Document",
             "Meta+z": "Undo",
             "Meta+n": "New Window",
             "Meta+x": "Cut", "Meta+x": "Cut",
@@ -296,17 +308,17 @@
         // Function to check if current combination matches any defined shortcuts
         function checkCombination() {
             const currentCombo = getCurrentCombination();
-            
+
             for (let combo in keyCombinations) {
                 // Check if the current combo matches or is a subset of a defined combo
                 const comboKeys = combo.split('+');
                 const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
-                
+
                 if (allKeysPresent && comboKeys.length === pressedKeys.size) {
                     return keyCombinations[combo];
                 }
             }
-            
+
             return null;
         }
 
@@ -316,7 +328,7 @@
             let keyName = e.key;
             if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
             if (keyName === 'Option') keyName = 'Alt';
-            
+
             pressedKeys.add(keyName);
 
             keys.forEach(k => {
@@ -341,7 +353,7 @@
             let keyName = e.key;
             if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
             if (keyName === 'Option') keyName = 'Alt';
-            
+
             pressedKeys.delete(keyName);
 
             keys.forEach(k => {
@@ -356,7 +368,7 @@
             key.addEventListener('mousedown', () => {
                 let val = key.dataset.key;
                 key.classList.add('active');
-                
+
                 // For special case handling of keys
                 if (val === 'Meta') {
                     pressedKeys.add('Meta');
@@ -369,7 +381,7 @@
                 } else {
                     pressedKeys.add(val);
                 }
-                
+
                 const shortcutAction = checkCombination();
                 if (shortcutAction) {
                     output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
@@ -379,21 +391,21 @@
                     output.value = val;
                 }
             });
-            
+
             key.addEventListener('mouseup', () => {
                 let val = key.dataset.key;
                 key.classList.remove('active');
-                
+
                 // Special case for modifier keys - keep them active until clicked again
                 if (val !== 'Meta' && val !== 'Alt' && val !== 'Control' && val !== 'Shift') {
                     pressedKeys.delete(val);
                 }
             });
-            
+
             // Double-click to toggle modifier keys
             key.addEventListener('dblclick', () => {
                 let val = key.dataset.key;
-                
+
                 if (val === 'Meta' || val === 'Alt' || val === 'Control' || val === 'Shift') {
                     if (pressedKeys.has(val)) {
                         pressedKeys.delete(val);
