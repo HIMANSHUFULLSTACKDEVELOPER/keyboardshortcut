@@ -11,7 +11,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #6e6e6e;
         }
 
         .keyboard-container {
@@ -26,6 +26,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            background-color: #6e6e6e;
         }
 
         .row {
@@ -210,11 +211,11 @@
             </div>
             <div class="row">
                 <div class="key key-wide key-special" data-key="Control">Ctrl</div>
-                <div class="key key-wide key-special" data-key="Meta">⌘</div>
+                <button class="key" data-key="Command">⌘ Command</button>
                 <div class="key key-wide key-special" data-key="Alt">Alt</div>
                 <div class="key key-super-wide" data-key=" ">Space</div>
                 <div class="key key-wide key-special" data-key="Alt">Alt</div>
-                <div class="key key-wide key-special" data-key="Meta">⌘</div>
+                <button class="key" data-key="Command">⌘ Command</button>
                 <div class="key key-wide key-special" data-key="Control">Ctrl</div>
                 <div class="key" data-key="ArrowLeft">←</div>
                 <div class="key" data-key="ArrowDown">↓</div>
@@ -222,201 +223,219 @@
             </div>
         </div>
     </div>
-
-    <script>
-        const output = document.querySelector('.output');
-        const keys = document.querySelectorAll('.key');
-        let pressedKeys = new Set();
-
-        // Key combination definitions
-        const keyCombinations = {
-            "Meta+c": "Copy",
-            "Meta+v": "Paste",
-            "Shift+1": "	Exclamation Mark",
-
-            "Shift+2": "At Sign",
-            "Shift+3": "Hash",
-            "Shift+4": "Dollar Sign",
-            "Shift+5": "Percent Sign",
-            "Shift+6": "Caret",
-            "Shift+7": "Ampersand",
-            "Shift+8": "Asterisk",
-            "Shift+9": "Left Parenthesis",
-            "Shift+0": "Right Parenthesis",
-            "Shift+;": ": Colon",
-            "Shift+'": "Quotation Mark",
-            "Shift+,": "< + Less Than",
-            "Shift+.": ">+ Greater Than",
-           "Shift+[": "[+ Left Brace",
-            "Shift+]": "]+ Right Brace",
-            "Shift+\\": "| + Pipe",
-            "Shift+ArrowUp": "Select Text Up",
-            "Shift+ArrowDown": "Select Text Down",
-            "Shift+ArrowLeft": "Select Text Left",
-            "Shift+ArrowRight": "Select Text Right",
-            "Shift+Tab": "Select Previous Field",
-            "Shift+Control+ArrowUp": "Select to the Top",
-            "Shift+Control+ArrowDown": "Select to the Bottom",
-            "Shift+Control+ArrowLeft": "Select to the Beginning of the Line",
-            "Shift+Control+ArrowRight": "Select to the End of the Line",
-            "Shift+Control+Home": "Select to the Beginning of the Document",
-            "Meta+z": "Undo",
-            "Meta+n": "New Window",
-            "Meta+x": "Cut", "Meta+x": "Cut",
-            "Meta+a": "Select All",
-            "Meta+s": "Save",
-            "Meta+z": "Undo",
-            "Meta+f": "Find",
-            "Meta+p": "Print",
-            "Meta+q": "Quit App",
-            "Meta+w": "Close Window",
-
-            "Meta+h": "Hide Window",
-            "Meta+m": "Minimize Window",
-            "Meta+ ": "Spotlight Search",
-            "Meta+Alt+Escape": "Force Quit",
-            "Meta+Tab": "Switch between apps",
-            "Meta+Shift+3": "Capture Full Screen",
-            "Meta+Shift+4": "Capture Partial Screen",
-            "Meta+Shift+5": "Screen Recording & Screenshot Options",
-            "Meta+Alt+m": "Minimize all Windows",
-            "Meta+Shift+n": "New Folder",
-            "Meta+i": "Get Info",
-            "Meta+d": "Duplicate",
-            "Meta+b": "Bold",
-            "Meta+u": "Underline",
-            "Meta+t": "Show/Hide Fonts",
-            "Meta+ArrowUp": "Go to the top of the page",
-            "Meta+ArrowDown": "Go to the bottom of the page",
-            "Meta+ArrowLeft": "Move cursor to the beginning of the line",
-            "Meta+ArrowRight": "Move cursor to the end of the line",
-            "Meta+l": "Focus on URL bar",
-            "Meta+r": "Refresh Page",
-            "Meta+Shift+t": "Reopen last closed tab",
-            "Control+Meta+q": "Lock Screen",
-            "Meta+Alt+d": "Show/Hide the Dock",
-            "Meta+Shift+g": "Go to Folder in Finder",
-            "Meta+Alt+h": "Hide all apps except the current one"
-        };
-
-        // Function to get the current key combination
-        function getCurrentCombination() {
-            const sortedKeys = Array.from(pressedKeys).sort();
-            return sortedKeys.join('+');
+    
+<script>const output = document.querySelector('.output');
+    const keys = document.querySelectorAll('.key');
+    let pressedKeys = new Set();
+    
+    // Shortcut combos with Command key instead of Meta
+    const keyCombinations = {
+        "Command+c": "Copy",
+        "Command+v": "Paste",
+        "Shift+1": "Exclamation Mark",
+        "Shift+2": "At Sign",
+        "Shift+3": "Hash",
+        "Shift+4": "Dollar Sign",
+        "Shift+5": "Percent Sign",
+        "Shift+6": "Caret",
+        "Shift+7": "Ampersand",
+        "Shift+8": "Asterisk",
+        "Shift+9": "Left Parenthesis",
+        "Shift+0": "Right Parenthesis",
+        "Shift+;": ": Colon",
+        "Shift+'": "Quotation Mark",
+        "Shift+,": "< + Less Than",
+        "Shift+.": ">+ Greater Than",
+        "Shift+[": "[+ Left Brace",
+        "Shift+]": "]+ Right Brace",
+        "Shift+\\": "| + Pipe",
+        "Shift+ArrowUp": "Select Text Up",
+        "Shift+ArrowDown": "Select Text Down",
+        "Shift+ArrowLeft": "Select Text Left",
+        "Shift+ArrowRight": "Select Text Right",
+        "Shift+Tab": "Select Previous Field",
+        "Shift+Control+ArrowUp": "Select to the Top",
+        "Shift+Control+ArrowDown": "Select to the Bottom",
+        "Shift+Control+ArrowLeft": "Select to the Beginning of the Line",
+        "Shift+Control+ArrowRight": "Select to the End of the Line",
+        "Shift+Control+Home": "Select to the Beginning of the Document",
+        "Command+z": "Undo",
+        "Command+n": "New Window",
+        "Command+x": "Cut",
+        "Command+a": "Select All",
+        "Command+s": "Save",
+        "Command+f": "Find",
+        "Command+p": "Print",
+        "Command+q": "Quit App",
+        "Command+w": "Close Window",
+        "Command+h": "Hide Window",
+        "Command+m": "Minimize Window",
+        "Command+ ": "Spotlight Search",
+        "Command+Alt+Escape": "Force Quit",
+        "Command+Tab": "Switch between apps",
+        "Command+Shift+3": "Capture Full Screen",
+        "Command+Shift+4": "Capture Partial Screen",
+        "Command+Shift+5": "Screen Recording & Screenshot Options",
+        "Command+Alt+m": "Minimize all Windows",
+        "Command+Shift+n": "New Folder",
+        "Command+i": "Get Info",
+        "Command+d": "Duplicate",
+        "Command+b": "Bold",
+        "Command+u": "Underline",
+        "Command+t": "Show/Hide Fonts",
+        "Command+ArrowUp": "Go to the top of the page",
+        "Command+ArrowDown": "Go to the bottom of the page",
+        "Command+ArrowLeft": "Move cursor to the beginning of the line",
+        "Command+ArrowRight": "Move cursor to the end of the line",
+        "Command+l": "Focus on URL bar",
+        "Command+r": "Refresh Page",
+        "Command+Shift+t": "Reopen last closed tab",
+        "Control+Command+q": "Lock Screen",
+        "Command+Alt+d": "Show/Hide the Dock",
+        "Command+Shift+g": "Go to Folder in Finder",
+        "Command+Alt+h": "Hide all apps except the current one"
+    };
+    
+    // Helper: Check if Shift is pressed
+    function isShiftPressed() {
+        return pressedKeys.has('Shift');
+    }
+    
+    // Convert letter key with Shift to uppercase else lowercase
+    function getLetterOutput(key) {
+        if (key.length === 1 && key.match(/[a-z]/i)) {
+            return isShiftPressed() ? key.toUpperCase() : key.toLowerCase();
         }
-
-        // Function to check if current combination matches any defined shortcuts
-        function checkCombination() {
-            const currentCombo = getCurrentCombination();
-
-            for (let combo in keyCombinations) {
-                // Check if the current combo matches or is a subset of a defined combo
-                const comboKeys = combo.split('+');
-                const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
-
-                if (allKeysPresent && comboKeys.length === pressedKeys.size) {
-                    return keyCombinations[combo];
-                }
+        return key;
+    }
+    
+    // Get sorted current pressed combination string
+    function getCurrentCombination() {
+        const sortedKeys = Array.from(pressedKeys).sort();
+        return sortedKeys.join('+');
+    }
+    
+    // Check if current pressed keys match a defined combo
+    function checkCombination() {
+        for (let combo in keyCombinations) {
+            const comboKeys = combo.split('+');
+            const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
+            if (allKeysPresent && comboKeys.length === pressedKeys.size) {
+                return keyCombinations[combo];
             }
-
-            return null;
         }
-
-        // Physical keyboard
-        window.addEventListener('keydown', (e) => {
-            // Normalize key names
-            let keyName = e.key;
-            if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
-            if (keyName === 'Option') keyName = 'Alt';
-
-            pressedKeys.add(keyName);
-
-            keys.forEach(k => {
-                if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
-                    k.classList.add('active');
-                }
-            });
-
-            const shortcutAction = checkCombination();
-            if (shortcutAction) {
-                e.preventDefault();
-                output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
+        return null;
+    }
+    
+    // Physical keyboard event listeners
+    window.addEventListener('keydown', (e) => {
+        let keyName = e.key;
+    
+        // Normalize modifier keys
+        if (keyName === 'Meta' || keyName === 'OS') keyName = 'Command';
+        if (keyName === 'Option') keyName = 'Alt';
+    
+        pressedKeys.add(keyName);
+    
+        // Highlight virtual key if exists
+        keys.forEach(k => {
+            if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
+                k.classList.add('active');
             }
-
-            if (e.key === 'Backspace' && pressedKeys.size === 1) {
+        });
+    
+        const shortcutAction = checkCombination();
+    
+        if (shortcutAction) {
+            e.preventDefault();
+            output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
+        } else {
+            // Show letters with shift logic
+            if (keyName.length === 1 && keyName.match(/[a-z]/i)) {
+                output.value = getLetterOutput(keyName);
+            }
+        }
+    
+        // Clear output on Backspace key alone
+        if (e.key === 'Backspace' && pressedKeys.size === 1) {
+            output.value = '';
+        }
+    });
+    
+    window.addEventListener('keyup', (e) => {
+        let keyName = e.key;
+        if (keyName === 'Meta' || keyName === 'OS') keyName = 'Command';
+        if (keyName === 'Option') keyName = 'Alt';
+    
+        pressedKeys.delete(keyName);
+    
+        keys.forEach(k => {
+            if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
+                k.classList.remove('active');
+            }
+        });
+    });
+    
+    // Virtual keyboard support: click, release, double-click
+    keys.forEach(key => {
+        key.addEventListener('mousedown', () => {
+            let val = key.dataset.key;
+    
+            key.classList.add('active');
+    
+            // Clear output on Backspace click
+            if (val === 'Backspace') {
                 output.value = '';
+                pressedKeys.clear();
+                keys.forEach(k => k.classList.remove('active'));
+                return;
             }
-        });
-
-        window.addEventListener('keyup', (e) => {
-            // Normalize key names
-            let keyName = e.key;
-            if (keyName === 'Meta' || keyName === 'OS') keyName = 'Meta';
-            if (keyName === 'Option') keyName = 'Alt';
-
-            pressedKeys.delete(keyName);
-
-            keys.forEach(k => {
-                if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
-                    k.classList.remove('active');
-                }
-            });
-        });
-
-        // Virtual keyboard clicks
-        keys.forEach(key => {
-            key.addEventListener('mousedown', () => {
-                let val = key.dataset.key;
-                key.classList.add('active');
-
-                // For special case handling of keys
-                if (val === 'Meta') {
-                    pressedKeys.add('Meta');
-                } else if (val === 'Alt') {
-                    pressedKeys.add('Alt');
-                } else if (val === 'Control') {
-                    pressedKeys.add('Control');
-                } else if (val === 'Shift') {
-                    pressedKeys.add('Shift');
+    
+            // Add modifiers or regular keys
+            if (['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
+                pressedKeys.add(val);
+            } else {
+                pressedKeys.add(val);
+            }
+    
+            const shortcutAction = checkCombination();
+    
+            if (shortcutAction) {
+                output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
+            } else {
+                // Output letter with Shift or lowercase
+                if (val.length === 1 && val.match(/[a-z]/i)) {
+                    output.value = getLetterOutput(val);
                 } else {
-                    pressedKeys.add(val);
-                }
-
-                const shortcutAction = checkCombination();
-                if (shortcutAction) {
-                    output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
-                } else if (val === 'Backspace' && pressedKeys.size === 1) {
-                    output.value = '';
-                } else if (pressedKeys.size === 1) {
                     output.value = val;
                 }
-            });
-
-            key.addEventListener('mouseup', () => {
-                let val = key.dataset.key;
-                key.classList.remove('active');
-
-                // Special case for modifier keys - keep them active until clicked again
-                if (val !== 'Meta' && val !== 'Alt' && val !== 'Control' && val !== 'Shift') {
-                    pressedKeys.delete(val);
-                }
-            });
-
-            // Double-click to toggle modifier keys
-            key.addEventListener('dblclick', () => {
-                let val = key.dataset.key;
-
-                if (val === 'Meta' || val === 'Alt' || val === 'Control' || val === 'Shift') {
-                    if (pressedKeys.has(val)) {
-                        pressedKeys.delete(val);
-                        key.classList.remove('active');
-                    } else {
-                        pressedKeys.add(val);
-                        key.classList.add('active');
-                    }
-                }
-            });
+            }
         });
+    
+        key.addEventListener('mouseup', () => {
+            let val = key.dataset.key;
+            key.classList.remove('active');
+    
+            // Remove non-modifier keys on mouseup
+            if (!['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
+                pressedKeys.delete(val);
+            }
+        });
+    
+        // Toggle modifier keys on double click
+        key.addEventListener('dblclick', () => {
+            let val = key.dataset.key;
+            if (['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
+                if (pressedKeys.has(val)) {
+                    pressedKeys.delete(val);
+                    key.classList.remove('active');
+                } else {
+                    pressedKeys.add(val);
+                    key.classList.add('active');
+                }
+            }
+        });
+    });
     </script>
 </body>
 

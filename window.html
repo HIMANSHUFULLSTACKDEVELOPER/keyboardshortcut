@@ -11,7 +11,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #6e6e6e;
         }
 
         .keyboard-container {
@@ -26,6 +26,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            background-color: #6e6e6e;
         }
 
         .row {
@@ -227,13 +228,13 @@
         const output = document.querySelector('.output');
         const keys = document.querySelectorAll('.key');
         let pressedKeys = new Set();
-
+        let isCapsLockOn = false;  // Track CapsLock state
+    
         // Key combination definitions
         const keyCombinations = {
             "Control+c": "Copy",
             "Control+v": "Paste",
-            "Shift+1": "	Exclamation Mark",
-
+            "Shift+1": "Exclamation Mark",
             "Shift+2": "At Sign",
             "Shift+3": "Hash",
             "Shift+4": "Dollar Sign",
@@ -250,15 +251,13 @@
             "Shift+/": "? Question Mark",
             "Control+z": "Undo",
             "Control+n": "New Window",
-            "Control+x": "Cut", "Control+x": "Cut",
+            "Control+x": "Cut",
             "Control+a": "Select All",
             "Control+s": "Save",
-            "Control+z": "Undo",
             "Control+f": "Find",
             "Control+p": "Print",
             "Control+q": "Quit App",
             "Control+w": "Close Window",
-
             "Control+h": "Hide Window",
             "Control+m": "Minimize Window",
             "Control+ ": "Spotlight Search",
@@ -283,7 +282,7 @@
             "Control+Shift+t": "Reopen last closed tab",
             "Control+Control+q": "Lock Screen",
             "Control+Alt+d": "Show/Hide the Dock",
-             "Shift+[": "[+ Left Brace",
+            "Shift+[": "[+ Left Brace",
             "Shift+]": "]+ Right Brace",
             "Shift+\\": "| + Pipe",
             "Shift+ArrowUp": "Select Text Up",
@@ -298,129 +297,197 @@
             "Shift+Control+Home": "Select to the Beginning of the Document",
             "Shift+Control+End": "Select to the End of the Document",
             "Shift+Control+PageUp": "Select to the Previous Page",
-            "Control+Shift+g": "Go to Folder in Finder","Shift{.": "[ Left Curly Bracen","Shift}.": "] + right Curly Bracen","Shift|.": "\  + Backslash",
+            "Control+Shift+g": "Go to Folder in Finder",
+            "Shift{.": "[ Left Curly Brace",
+            "Shift}.": "] + right Curly Brace",
+            "Shift|.": "\\ + Backslash",
             "Control+Alt+h": "Hide all apps except the current one"
         };
-
+    
         // Function to get the current key combination
         function getCurrentCombination() {
             const sortedKeys = Array.from(pressedKeys).sort();
             return sortedKeys.join('+');
         }
-
+    
         // Function to check if current combination matches any defined shortcuts
         function checkCombination() {
-            const currentCombo = getCurrentCombination();
-
             for (let combo in keyCombinations) {
-                // Check if the current combo matches or is a subset of a defined combo
                 const comboKeys = combo.split('+');
                 const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
-
                 if (allKeysPresent && comboKeys.length === pressedKeys.size) {
                     return keyCombinations[combo];
                 }
             }
-
             return null;
         }
-
-        // Physical keyboard
+    
+        // Helper: Update letter keys display and dataset based on CapsLock state
+        function updateLetterKeysCase() {
+            keys.forEach(key => {
+                let keyVal = key.dataset.key;
+                if (keyVal && keyVal.length === 1 && keyVal.match(/[a-z]/i)) {
+                    if (isCapsLockOn) {
+                        key.dataset.key = keyVal.toUpperCase();
+                        key.textContent = keyVal.toUpperCase();
+                    } else {
+                        key.dataset.key = keyVal.toLowerCase();
+                        key.textContent = keyVal.toLowerCase();
+                    }
+                }
+            });
+        }
+    
+        // Function to get letter output considering Shift and CapsLock
+        function getLetterOutput(key) {
+            const isShiftPressed = pressedKeys.has('Shift');
+            if (key.length === 1 && key.match(/[a-z]/i)) {
+                if (isCapsLockOn) {
+                    return isShiftPressed ? key.toLowerCase() : key.toUpperCase();
+                } else {
+                    return isShiftPressed ? key.toUpperCase() : key.toLowerCase();
+                }
+            }
+            return key;
+        }
+    
+        // Physical keyboard event listeners
         window.addEventListener('keydown', (e) => {
-            // Normalize key names
             let keyName = e.key;
+    
+            // Handle CapsLock toggle
+            if (keyName === 'CapsLock') {
+                isCapsLockOn = !isCapsLockOn;
+                updateLetterKeysCase();
+    
+                keys.forEach(k => {
+                    if (k.dataset.key === 'CapsLock') {
+                        k.classList.toggle('active', isCapsLockOn);
+                    }
+                });
+                // Don't add CapsLock to pressedKeys
+                e.preventDefault();
+                return;
+            }
+    
+            // Normalize key names
             if (keyName === 'Control' || keyName === 'OS') keyName = 'Control';
             if (keyName === 'Option') keyName = 'Alt';
-
+    
             pressedKeys.add(keyName);
-
+    
             keys.forEach(k => {
                 if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
                     k.classList.add('active');
                 }
             });
-
+    
             const shortcutAction = checkCombination();
             if (shortcutAction) {
                 e.preventDefault();
                 output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
+            } else {
+                if (keyName.length === 1 && keyName.match(/[a-z]/i)) {
+                    output.value = getLetterOutput(keyName);
+                }
             }
-
+    
             if (e.key === 'Backspace' && pressedKeys.size === 1) {
                 output.value = '';
             }
         });
-
+    
         window.addEventListener('keyup', (e) => {
-            // Normalize key names
             let keyName = e.key;
             if (keyName === 'Control' || keyName === 'OS') keyName = 'Control';
             if (keyName === 'Option') keyName = 'Alt';
-
+    
             pressedKeys.delete(keyName);
-
+    
             keys.forEach(k => {
                 if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
                     k.classList.remove('active');
                 }
             });
         });
-
+    
         // Virtual keyboard clicks
         keys.forEach(key => {
             key.addEventListener('mousedown', () => {
                 let val = key.dataset.key;
+    
+                // Handle CapsLock toggle separately
+                if (val === 'CapsLock') {
+                    isCapsLockOn = !isCapsLockOn;
+                    updateLetterKeysCase();
+                    key.classList.toggle('active', isCapsLockOn);
+                    return;
+                }
+    
                 key.classList.add('active');
-
-                // For special case handling of keys
-                if (val === 'Meta') {
-                    pressedKeys.add('Meta');
-                } else if (val === 'Alt') {
-                    pressedKeys.add('Alt');
-                } else if (val === 'Control') {
-                    pressedKeys.add('Control');
-                } else if (val === 'Shift') {
-                    pressedKeys.add('Shift');
+    
+                if (val === 'Backspace') {
+                    output.value = '';
+                    pressedKeys.clear();
+                    keys.forEach(k => k.classList.remove('active'));
+                    return;
+                }
+    
+                // Add modifiers or regular keys
+                if (['Control', 'Alt', 'Shift', 'Meta'].includes(val)) {
+                    pressedKeys.add(val);
                 } else {
                     pressedKeys.add(val);
                 }
-
+    
                 const shortcutAction = checkCombination();
                 if (shortcutAction) {
                     output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
-                } else if (val === 'Backspace' && pressedKeys.size === 1) {
-                    output.value = '';
-                } else if (pressedKeys.size === 1) {
-                    output.value = val;
+                } else {
+                    if (val.length === 1 && val.match(/[a-z]/i)) {
+                        output.value = getLetterOutput(val);
+                    } else {
+                        output.value = val;
+                    }
                 }
             });
-
+    
             key.addEventListener('mouseup', () => {
                 let val = key.dataset.key;
                 key.classList.remove('active');
-
-                // Special case for modifier keys - keep them active until clicked again
-                if (val !== 'Meta' && val !== 'Alt' && val !== 'Control' && val !== 'Shift') {
+    
+                // Keep modifier keys active until toggled off by double click
+                if (!['Control', 'Alt', 'Shift', 'Meta', 'CapsLock'].includes(val)) {
                     pressedKeys.delete(val);
                 }
             });
-
-            // Double-click to toggle modifier keys
+    
+            // Double-click to toggle modifier keys (including CapsLock)
             key.addEventListener('dblclick', () => {
                 let val = key.dataset.key;
-
-                if (val === 'Meta' || val === 'Alt' || val === 'Control' || val === 'Shift') {
+                if (['Control', 'Alt', 'Shift', 'Meta', 'CapsLock'].includes(val)) {
                     if (pressedKeys.has(val)) {
                         pressedKeys.delete(val);
                         key.classList.remove('active');
+                        if(val === 'CapsLock'){
+                            isCapsLockOn = false;
+                            updateLetterKeysCase();
+                        }
                     } else {
                         pressedKeys.add(val);
                         key.classList.add('active');
+                        if(val === 'CapsLock'){
+                            isCapsLockOn = true;
+                            updateLetterKeysCase();
+                        }
                     }
                 }
             });
         });
     </script>
+    
+
+    
 </body>
 
 </html>
