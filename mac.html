@@ -126,86 +126,84 @@
         background-color: #f9f9f9;
       }
 
-/* Mobile Devices */
-@media (max-width: 768px) {
-  .keyboard-container {
-    padding: 20px;
-    border-radius: 12px;
-  }
+      /* Mobile Devices */
+      @media (max-width: 768px) {
+        .keyboard-container {
+          padding: 20px;
+          border-radius: 12px;
+        }
 
-  .keyboard-container h1 {
-    font-size: 24px;
-  }
+        .keyboard-container h1 {
+          font-size: 24px;
+        }
 
-  .output {
-    font-size: 16px;
-    height: 100px;
-  }
+        .output {
+          font-size: 16px;
+          height: 100px;
+        }
 
-  .key,
-  .keys {
-    font-size: 12px;
-    height: 40px;
-    min-width: 40px;
-    padding: 0 8px;
-  }
+        .key,
+        .keys {
+          font-size: 12px;
+          height: 40px;
+          min-width: 40px;
+          padding: 0 8px;
+        }
 
-  .key-wide {
-    min-width: 70px;
-  }
+        .key-wide {
+          min-width: 70px;
+        }
 
-  .key-extra-wide {
-    min-width: 85px;
-  }
+        .key-extra-wide {
+          min-width: 85px;
+        }
 
-  .key-super-wide {
-    min-width: 200px;
-  }
-}
+        .key-super-wide {
+          min-width: 200px;
+        }
+      }
 
-/* Screen Rotation: Landscape Mode */
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  body {
-    flex-direction: column;
-    padding: 10px;
-  }
+      /* Screen Rotation: Landscape Mode */
+      @media screen and (orientation: landscape) and (max-height: 500px) {
+        body {
+          flex-direction: column;
+          padding: 10px;
+        }
 
-  .keyboard-container {
-    padding: 15px;
-    max-height: 100vh;
-    overflow-y: auto;
-  }
+        .keyboard-container {
+          padding: 15px;
+          max-height: 100vh;
+          overflow-y: auto;
+        }
 
-  .output {
-    font-size: 16px;
-    height: 90px;
-  }
+        .output {
+          font-size: 16px;
+          height: 90px;
+        }
 
-  .keyboard {
-    gap: 8px;
-  }
+        .keyboard {
+          gap: 8px;
+        }
 
-  .key,
-  .keys {
-    font-size: 11px;
-    height: 38px;
-    min-width: 38px;
-  }
+        .key,
+        .keys {
+          font-size: 11px;
+          height: 38px;
+          min-width: 38px;
+        }
 
-  .key-wide {
-    min-width: 65px;
-  }
+        .key-wide {
+          min-width: 65px;
+        }
 
-  .key-extra-wide {
-    min-width: 80px;
-  }
+        .key-extra-wide {
+          min-width: 80px;
+        }
 
-  .key-super-wide {
-    min-width: 180px;
-  }
-}
-
-      
+        .key-super-wide {
+          min-width: 180px;
+        }
+      }
     </style>
   </head>
 
@@ -304,7 +302,7 @@
           </div>
           <div class="key key-wide key-special" data-key="Enter">Enter</div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-left: 27px;">
           <div class="key key-extra-wide key-special" data-key="Shift">
             Shift
           </div>
@@ -330,7 +328,7 @@
           </div>
           <div class="key" data-key="ArrowUp">↑</div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-left: 22px;">
           <div class="key key-wide key-special" data-key="Control">Ctrl</div>
           <button class="key" data-key="Command">⌘</button>
           <div class="key key-wide key-special" data-key="Alt">Alt</div>
