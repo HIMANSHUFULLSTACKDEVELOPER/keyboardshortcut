@@ -4,108 +4,208 @@
 <head>
     <title>window Keyboard</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #6e6e6e;
-        }
+          body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(to right, #1f1c2c, #928dab);
+      }
 
-        .keyboard-container {
-            width: 1199px;
-            padding: 20px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+      .keyboard-container {
+        width: 100%;
+        max-width: 1300px;
+        padding: 30px;
+        background: #f2f2f2;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        text-align: center;
+      }
 
-        .keyboard {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background-color: #6e6e6e;
-        }
+      .keyboard-container h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-        .row {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
+      .keys a {
+        color: #333;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: 2px solid #333;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
+      }
 
-        .key {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: bold;
-            height: 40px;
-            min-width: 40px;
-            padding: 0 10px;
-            transition: all 0.1s;
-            position: relative;
-        }
+      .keys a:hover {
+        background-color: #333;
+        color: #fff;
+      }
 
-        .keys {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: bold;
-            height: 40px;
-            min-width: 40px;
-            padding: 0 10px;
-            transition: all 0.1s;
-            position: relative;
-        }
+      .output {
+        width: 100%;
+        height: 120px;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 8px;
+        border: 2px solid #aaa;
+        resize: none;
+        margin-bottom: 30px;
+        background-color: #ffffff;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
 
-        .key:active,
-        .key.active {
-            background-color: #e6e6e6;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-            transform: translateY(2px);
-        }
+      .keyboard {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px;
+        background-color: #ddd;
+        border-radius: 10px;
+      }
 
-        .key-special {
-            background-color: #d3d3d3;
-        }
+      .row {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
 
-        .key-wide {
-            min-width: 70px;
-        }
+      .key,
+      .keys {
+        background-color: #f9f9f9;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        height: 50px;
+        min-width: 50px;
+        padding: 0 12px;
+        transition: all 0.1s ease;
+        user-select: none;
+      }
 
-        .key-extra-wide {
-            min-width: 110px;
-        }
+      .key:active,
+      .key.active {
+        background-color: #d1d1d1;
+        transform: translateY(2px);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
 
-        .key-super-wide {
-            min-width: 270px;
-        }
+      .key-special {
+        background-color: #e4e4e4;
+        font-weight: bold;
+      }
 
-        .output {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 20px;
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 5px;
-            border: 1px solid #cccccc;
-            resize: none;
-            box-sizing: border-box;
-            text-align: center;
-        }
+      .key-wide {
+        min-width: 85px;
+      }
+
+      .key-extra-wide {
+        min-width: 100px;
+      }
+
+      .key-super-wide {
+        min-width: 300px;
+      }
+
+      .key:hover {
+        background-color: #eaeaea;
+      }
+
+      button.key {
+        border: none;
+        background-color: #f9f9f9;
+      }
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .keyboard-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .keyboard-container h1 {
+    font-size: 24px;
+  }
+
+  .output {
+    font-size: 16px;
+    height: 100px;
+  }
+
+  .key,
+  .keys {
+    font-size: 12px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0 8px;
+  }
+
+  .key-wide {
+    min-width: 70px;
+  }
+
+  .key-extra-wide {
+    min-width: 85px;
+  }
+
+  .key-super-wide {
+    min-width: 200px;
+  }
+}
+
+/* Screen Rotation: Landscape Mode */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  body {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .keyboard-container {
+    padding: 15px;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .output {
+    font-size: 16px;
+    height: 90px;
+  }
+
+  .keyboard {
+    gap: 8px;
+  }
+
+  .key,
+  .keys {
+    font-size: 11px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .key-wide {
+    min-width: 65px;
+  }
+
+  .key-extra-wide {
+    min-width: 80px;
+  }
+
+  .key-super-wide {
+    min-width: 180px;
+  }
+}
+
+
     </style>
 </head>
 

@@ -1,235 +1,357 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Mac Keyboard</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #6e6e6e;
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(to right, #1f1c2c, #928dab);
+      }
 
-        .keyboard-container {
-            width: 1199px;
-            padding: 20px;
-            background-color: #e0e0e0;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+      .keyboard-container {
+        width: 100%;
+        max-width: 1200px;
+        padding: 30px;
+        background: #f2f2f2;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        text-align: center;
+      }
 
-        .keyboard {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background-color: #6e6e6e;
-        }
+      .keyboard-container h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-        .row {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-        }
+      .keys a {
+        color: #333;
+        font-weight: 600;
+        padding: 8px 16px;
+        border: 2px solid #333;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
+      }
 
-        .key {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: bold;
-            height: 40px;
-            min-width: 40px;
-            padding: 0 10px;
-            transition: all 0.1s;
-            position: relative;
-        }
+      .keys a:hover {
+        background-color: #333;
+        color: #fff;
+      }
 
-        .keys {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: bold;
-            height: 40px;
-            min-width: 40px;
-            padding: 0 10px;
-            transition: all 0.1s;
-            position: relative;
-        }
+      .output {
+        width: 100%;
+        height: 120px;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 8px;
+        border: 2px solid #aaa;
+        resize: none;
+        margin-bottom: 30px;
+        background-color: #ffffff;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
 
-        .key:active,
-        .key.active {
-            background-color: #e6e6e6;
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-            transform: translateY(2px);
-        }
+      .keyboard {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 10px;
+        background-color: #ddd;
+        border-radius: 10px;
+      }
 
-        .key-special {
-            background-color: #d3d3d3;
-        }
+      .row {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
 
-        .key-wide {
-            min-width: 70px;
-        }
+      .key,
+      .keys {
+        background-color: #f9f9f9;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 600;
+        height: 50px;
+        min-width: 50px;
+        padding: 0 12px;
+        transition: all 0.1s ease;
+        user-select: none;
+      }
 
-        .key-extra-wide {
-            min-width: 110px;
-        }
+      .key:active,
+      .key.active {
+        background-color: #d1d1d1;
+        transform: translateY(2px);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
 
-        .key-super-wide {
-            min-width: 270px;
-        }
+      .key-special {
+        background-color: #e4e4e4;
+        font-weight: bold;
+      }
 
-        .output {
-            width: 100%;
-            height: 100px;
-            margin-bottom: 20px;
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 5px;
-            border: 1px solid #cccccc;
-            resize: none;
-            box-sizing: border-box;
-            text-align: center;
-        }
+      .key-wide {
+        min-width: 85px;
+      }
+
+      .key-extra-wide {
+        min-width: 100px;
+      }
+
+      .key-super-wide {
+        min-width: 300px;
+      }
+
+      .key:hover {
+        background-color: #eaeaea;
+      }
+
+      button.key {
+        border: none;
+        background-color: #f9f9f9;
+      }
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .keyboard-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .keyboard-container h1 {
+    font-size: 24px;
+  }
+
+  .output {
+    font-size: 16px;
+    height: 100px;
+  }
+
+  .key,
+  .keys {
+    font-size: 12px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0 8px;
+  }
+
+  .key-wide {
+    min-width: 70px;
+  }
+
+  .key-extra-wide {
+    min-width: 85px;
+  }
+
+  .key-super-wide {
+    min-width: 200px;
+  }
+}
+
+/* Screen Rotation: Landscape Mode */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  body {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .keyboard-container {
+    padding: 15px;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .output {
+    font-size: 16px;
+    height: 90px;
+  }
+
+  .keyboard {
+    gap: 8px;
+  }
+
+  .key,
+  .keys {
+    font-size: 11px;
+    height: 38px;
+    min-width: 38px;
+  }
+
+  .key-wide {
+    min-width: 65px;
+  }
+
+  .key-extra-wide {
+    min-width: 80px;
+  }
+
+  .key-super-wide {
+    min-width: 180px;
+  }
+}
+
+      
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="keyboard-container">
-        <h1 style="text-align: center;">Mac Keyboard</h1>
+      <h1 style="text-align: center">Mac Keyboard</h1>
 
-        <div class="keys"> <a style="text-decoration: none;" href="./index.html"> Back </a></div>
-        <br>
+      <div class="keys">
+        <a style="text-decoration: none" href="./index.html"> Back </a>
+      </div>
+      <br />
 
-        <textarea class="output" placeholder="Click your shortcut key buttons"></textarea>
-        <div class="keyboard">
-            <div class="row">
-                <div class="key key-special" data-key="Escape">Esc</div>
-                <div class="key" data-key="1">!</div>
-                <div class="key" data-key="2">@</div>
-                <div class="key" data-key="3">#</div>
-                <div class="key" data-key="4">$</div>
-                <div class="key" data-key="5">%</div>
-                <div class="key" data-key="6">^</div>
-                <div class="key" data-key="7">&</div>
-                <div class="key" data-key="8">*</div>
-                <div class="key" data-key="9">(</div>
-                <div class="key" data-key="0">)</div>
-                <div class="key" data-key="-">Prt Sc</div>
-                <div class="key" data-key="Insert">Insert</div>
-                <div class="key" data-key="Delete">Delete</div>
-            </div>
-
-            <div class="row">
-                <div class="key key-special" data-key="`">~
-                    <span style="margin-top: -15px;">`</span>
-                </div>
-                <div class="key" data-key="1">1</div>
-                <div class="key" data-key="2">2</div>
-                <div class="key" data-key="3">3</div>
-                <div class="key" data-key="4">4</div>
-                <div class="key" data-key="5">5</div>
-                <div class="key" data-key="6">6</div>
-                <div class="key" data-key="7">7</div>
-                <div class="key" data-key="8">8</div>
-                <div class="key" data-key="9">9</div>
-                <div class="key" data-key="0">0</div>
-                <div class="key" data-key="-">-</div>
-                <div class="key" data-key="=">=</div>
-                <div class="key key-wide key-special" data-key="Backspace">
-                    Backspace</div>
-            </div>
-            <div class="row">
-                <div class="key key-wide key-special" data-key="Tab">Tab</div>
-                <div class="key" data-key="q">Q</div>
-                <div class="key" data-key="w">W</div>
-                <div class="key" data-key="e">E</div>
-                <div class="key" data-key="r">R</div>
-                <div class="key" data-key="t">T</div>
-                <div class="key" data-key="y">Y</div>
-                <div class="key" data-key="u">U</div>
-                <div class="key" data-key="i">I</div>
-                <div class="key" data-key="o">O</div>
-                <div class="key" data-key="p">P</div>
-                <div class="key" data-key="[">
-                    <span style="margin-top: -15px;">{</span> [
-                </div>
-                <div class="key" data-key="]"><span style="margin-top: -15px;">}</span>]</div>
-                <div class="key" data-key="\"><span style="margin-top: -15px;">|</span>\</div>
-            </div>
-            <div class="row">
-                <div class="key key-wide key-special" data-key="CapsLock">CapsLock</div>
-                <div class="key" data-key="a">A</div>
-                <div class="key" data-key="s">S</div>
-                <div class="key" data-key="d">D</div>
-                <div class="key" data-key="f">F</div>
-                <div class="key" data-key="g">G</div>
-                <div class="key" data-key="h">H</div>
-                <div class="key" data-key="j">J</div>
-                <div class="key" data-key="k">K</div>
-                <div class="key" data-key="l">L</div>
-                <div class="key" data-key=";">
-                    <span style="margin-top: -15px;" data-key="Colon">:</span>;
-                </div>
-                <div class="key" data-key="'">
-                    <span style="margin-top: -15px;" data-key="Quotation Mark">"</span>'
-                </div>
-                <div class="key key-wide key-special" data-key="Enter">Enter</div>
-            </div>
-            <div class="row">
-                <div class="key key-extra-wide key-special" data-key="Shift">Shift</div>
-                <div class="key" data-key="z">Z</div>
-                <div class="key" data-key="x">X</div>
-                <div class="key" data-key="c">C</div>
-                <div class="key" data-key="v">V</div>
-                <div class="key" data-key="b">B</div>
-                <div class="key" data-key="n">N</div>
-                <div class="key" data-key="m">M</div>
-                <div class="key" data-key=","><span style="margin-top: -15px;">&lt;</span>,</div>
-                <div class="key" data-key="."><span style="margin-top: -15px;">&gt;</span>.</div>
-                <div class="key" data-key="/">
-                    <span style="margin-top: -15px;">?</span>
-                    /
-                </div>
-                <div class="key key-extra-wide key-special" data-key="Shift">Shift</div>
-                <div class="key" data-key="ArrowUp">↑</div>
-            </div>
-            <div class="row">
-                <div class="key key-wide key-special" data-key="Control">Ctrl</div>
-                <button class="key" data-key="Command">⌘ Command</button>
-                <div class="key key-wide key-special" data-key="Alt">Alt</div>
-                <div class="key key-super-wide" data-key=" ">Space</div>
-                <div class="key key-wide key-special" data-key="Alt">Alt</div>
-                <button class="key" data-key="Command">⌘ Command</button>
-                <div class="key key-wide key-special" data-key="Control">Ctrl</div>
-                <div class="key" data-key="ArrowLeft">←</div>
-                <div class="key" data-key="ArrowDown">↓</div>
-                <div class="key" data-key="ArrowRight">→</div>
-            </div>
+      <textarea
+        class="output"
+        placeholder="Click your shortcut key buttons"
+      ></textarea>
+      <div class="keyboard">
+        <div class="row">
+          <div class="key key-special" data-key="Escape">Esc</div>
+          <div class="key" data-key="1">!</div>
+          <div class="key" data-key="2">@</div>
+          <div class="key" data-key="3">#</div>
+          <div class="key" data-key="4">$</div>
+          <div class="key" data-key="5">%</div>
+          <div class="key" data-key="6">^</div>
+          <div class="key" data-key="7">&</div>
+          <div class="key" data-key="8">*</div>
+          <div class="key" data-key="9">(</div>
+          <div class="key" data-key="0">)</div>
+          <div class="key" data-key="-">Prt Sc</div>
+          <div class="key" data-key="Insert">Insert</div>
+          <div class="key" data-key="Delete">Delete</div>
         </div>
+
+        <div class="row">
+          <div class="key key-special" data-key="`">
+            ~
+            <span style="margin-top: -15px">`</span>
+          </div>
+          <div class="key" data-key="1">1</div>
+          <div class="key" data-key="2">2</div>
+          <div class="key" data-key="3">3</div>
+          <div class="key" data-key="4">4</div>
+          <div class="key" data-key="5">5</div>
+          <div class="key" data-key="6">6</div>
+          <div class="key" data-key="7">7</div>
+          <div class="key" data-key="8">8</div>
+          <div class="key" data-key="9">9</div>
+          <div class="key" data-key="0">0</div>
+          <div class="key" data-key="-">-</div>
+          <div class="key" data-key="=">=</div>
+          <div class="key key-wide key-special" data-key="Backspace">
+            Backspace
+          </div>
+        </div>
+        <div class="row">
+          <div class="key key-wide key-special" data-key="Tab">Tab</div>
+          <div class="key" data-key="q">Q</div>
+          <div class="key" data-key="w">W</div>
+          <div class="key" data-key="e">E</div>
+          <div class="key" data-key="r">R</div>
+          <div class="key" data-key="t">T</div>
+          <div class="key" data-key="y">Y</div>
+          <div class="key" data-key="u">U</div>
+          <div class="key" data-key="i">I</div>
+          <div class="key" data-key="o">O</div>
+          <div class="key" data-key="p">P</div>
+          <div class="key" data-key="[">
+            <span style="margin-top: -15px">{</span> [
+          </div>
+          <div class="key" data-key="]">
+            <span style="margin-top: -15px">}</span>]
+          </div>
+          <div class="key" data-key="\">
+            <span style="margin-top: -15px">|</span>\
+          </div>
+        </div>
+        <div class="row">
+          <div class="key key-wide key-special" data-key="CapsLock">
+            CapLock
+          </div>
+          <div class="key" data-key="a">A</div>
+          <div class="key" data-key="s">S</div>
+          <div class="key" data-key="d">D</div>
+          <div class="key" data-key="f">F</div>
+          <div class="key" data-key="g">G</div>
+          <div class="key" data-key="h">H</div>
+          <div class="key" data-key="j">J</div>
+          <div class="key" data-key="k">K</div>
+          <div class="key" data-key="l">L</div>
+          <div class="key" data-key=";">
+            <span style="margin-top: -15px" data-key="Colon">:</span>;
+          </div>
+          <div class="key" data-key="'">
+            <span style="margin-top: -15px" data-key="Quotation Mark">"</span>'
+          </div>
+          <div class="key key-wide key-special" data-key="Enter">Enter</div>
+        </div>
+        <div class="row">
+          <div class="key key-extra-wide key-special" data-key="Shift">
+            Shift
+          </div>
+          <div class="key" data-key="z">Z</div>
+          <div class="key" data-key="x">X</div>
+          <div class="key" data-key="c">C</div>
+          <div class="key" data-key="v">V</div>
+          <div class="key" data-key="b">B</div>
+          <div class="key" data-key="n">N</div>
+          <div class="key" data-key="m">M</div>
+          <div class="key" data-key=",">
+            <span style="margin-top: -15px">&lt;</span>,
+          </div>
+          <div class="key" data-key=".">
+            <span style="margin-top: -15px">&gt;</span>.
+          </div>
+          <div class="key" data-key="/">
+            <span style="margin-top: -15px">?</span>
+            /
+          </div>
+          <div class="key key-extra-wide key-special" data-key="Shift">
+            Shift
+          </div>
+          <div class="key" data-key="ArrowUp">↑</div>
+        </div>
+        <div class="row">
+          <div class="key key-wide key-special" data-key="Control">Ctrl</div>
+          <button class="key" data-key="Command">⌘</button>
+          <div class="key key-wide key-special" data-key="Alt">Alt</div>
+          <div class="key key-super-wide" data-key=" ">Space</div>
+          <div class="key key-wide key-special" data-key="Alt">Alt</div>
+          <button class="key" data-key="Command">⌘</button>
+          <div class="key key-wide key-special" data-key="Control">Ctrl</div>
+          <div class="key" data-key="ArrowLeft">←</div>
+          <div class="key" data-key="ArrowDown">↓</div>
+          <div class="key" data-key="ArrowRight">→</div>
+        </div>
+      </div>
     </div>
-    
-<script>const output = document.querySelector('.output');
-    const keys = document.querySelectorAll('.key');
-    let pressedKeys = new Set();
-    
-    // Shortcut combos with Command key instead of Meta
-    const keyCombinations = {
+
+    <script>
+      const output = document.querySelector(".output");
+      const keys = document.querySelectorAll(".key");
+      let pressedKeys = new Set();
+
+      // Shortcut combos with Command key instead of Meta
+      const keyCombinations = {
         "Command+c": "Copy",
         "Command+v": "Paste",
         "Shift+1": "Exclamation Mark",
@@ -294,150 +416,155 @@
         "Control+Command+q": "Lock Screen",
         "Command+Alt+d": "Show/Hide the Dock",
         "Command+Shift+g": "Go to Folder in Finder",
-        "Command+Alt+h": "Hide all apps except the current one"
-    };
-    
-    // Helper: Check if Shift is pressed
-    function isShiftPressed() {
-        return pressedKeys.has('Shift');
-    }
-    
-    // Convert letter key with Shift to uppercase else lowercase
-    function getLetterOutput(key) {
+        "Command+Alt+h": "Hide all apps except the current one",
+      };
+
+      // Helper: Check if Shift is pressed
+      function isShiftPressed() {
+        return pressedKeys.has("Shift");
+      }
+
+      // Convert letter key with Shift to uppercase else lowercase
+      function getLetterOutput(key) {
         if (key.length === 1 && key.match(/[a-z]/i)) {
-            return isShiftPressed() ? key.toUpperCase() : key.toLowerCase();
+          return isShiftPressed() ? key.toUpperCase() : key.toLowerCase();
         }
         return key;
-    }
-    
-    // Get sorted current pressed combination string
-    function getCurrentCombination() {
+      }
+
+      // Get sorted current pressed combination string
+      function getCurrentCombination() {
         const sortedKeys = Array.from(pressedKeys).sort();
-        return sortedKeys.join('+');
-    }
-    
-    // Check if current pressed keys match a defined combo
-    function checkCombination() {
+        return sortedKeys.join("+");
+      }
+
+      // Check if current pressed keys match a defined combo
+      function checkCombination() {
         for (let combo in keyCombinations) {
-            const comboKeys = combo.split('+');
-            const allKeysPresent = comboKeys.every(key => pressedKeys.has(key));
-            if (allKeysPresent && comboKeys.length === pressedKeys.size) {
-                return keyCombinations[combo];
-            }
+          const comboKeys = combo.split("+");
+          const allKeysPresent = comboKeys.every((key) => pressedKeys.has(key));
+          if (allKeysPresent && comboKeys.length === pressedKeys.size) {
+            return keyCombinations[combo];
+          }
         }
         return null;
-    }
-    
-    // Physical keyboard event listeners
-    window.addEventListener('keydown', (e) => {
-        let keyName = e.key;
-    
-        // Normalize modifier keys
-        if (keyName === 'Meta' || keyName === 'OS') keyName = 'Command';
-        if (keyName === 'Option') keyName = 'Alt';
-    
-        pressedKeys.add(keyName);
-    
-        // Highlight virtual key if exists
-        keys.forEach(k => {
-            if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
-                k.classList.add('active');
-            }
-        });
-    
-        const shortcutAction = checkCombination();
-    
-        if (shortcutAction) {
-            e.preventDefault();
-            output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
-        } else {
-            // Show letters with shift logic
-            if (keyName.length === 1 && keyName.match(/[a-z]/i)) {
-                output.value = getLetterOutput(keyName);
-            }
-        }
-    
-        // Clear output on Backspace key alone
-        if (e.key === 'Backspace' && pressedKeys.size === 1) {
-            output.value = '';
-        }
-    });
-    
-    window.addEventListener('keyup', (e) => {
-        let keyName = e.key;
-        if (keyName === 'Meta' || keyName === 'OS') keyName = 'Command';
-        if (keyName === 'Option') keyName = 'Alt';
-    
-        pressedKeys.delete(keyName);
-    
-        keys.forEach(k => {
-            if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
-                k.classList.remove('active');
-            }
-        });
-    });
-    
-    // Virtual keyboard support: click, release, double-click
-    keys.forEach(key => {
-        key.addEventListener('mousedown', () => {
-            let val = key.dataset.key;
-    
-            key.classList.add('active');
-    
-            // Clear output on Backspace click
-            if (val === 'Backspace') {
-                output.value = '';
-                pressedKeys.clear();
-                keys.forEach(k => k.classList.remove('active'));
-                return;
-            }
-    
-            // Add modifiers or regular keys
-            if (['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
-                pressedKeys.add(val);
-            } else {
-                pressedKeys.add(val);
-            }
-    
-            const shortcutAction = checkCombination();
-    
-            if (shortcutAction) {
-                output.value = `${getCurrentCombination().replace(/\+/g, ' + ')} = ${shortcutAction}`;
-            } else {
-                // Output letter with Shift or lowercase
-                if (val.length === 1 && val.match(/[a-z]/i)) {
-                    output.value = getLetterOutput(val);
-                } else {
-                    output.value = val;
-                }
-            }
-        });
-    
-        key.addEventListener('mouseup', () => {
-            let val = key.dataset.key;
-            key.classList.remove('active');
-    
-            // Remove non-modifier keys on mouseup
-            if (!['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
-                pressedKeys.delete(val);
-            }
-        });
-    
-        // Toggle modifier keys on double click
-        key.addEventListener('dblclick', () => {
-            let val = key.dataset.key;
-            if (['Command', 'Alt', 'Control', 'Shift'].includes(val)) {
-                if (pressedKeys.has(val)) {
-                    pressedKeys.delete(val);
-                    key.classList.remove('active');
-                } else {
-                    pressedKeys.add(val);
-                    key.classList.add('active');
-                }
-            }
-        });
-    });
-    </script>
-</body>
+      }
 
+      // Physical keyboard event listeners
+      window.addEventListener("keydown", (e) => {
+        let keyName = e.key;
+
+        // Normalize modifier keys
+        if (keyName === "Meta" || keyName === "OS") keyName = "Command";
+        if (keyName === "Option") keyName = "Alt";
+
+        pressedKeys.add(keyName);
+
+        // Highlight virtual key if exists
+        keys.forEach((k) => {
+          if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
+            k.classList.add("active");
+          }
+        });
+
+        const shortcutAction = checkCombination();
+
+        if (shortcutAction) {
+          e.preventDefault();
+          output.value = `${getCurrentCombination().replace(
+            /\+/g,
+            " + "
+          )} = ${shortcutAction}`;
+        } else {
+          // Show letters with shift logic
+          if (keyName.length === 1 && keyName.match(/[a-z]/i)) {
+            output.value = getLetterOutput(keyName);
+          }
+        }
+
+        // Clear output on Backspace key alone
+        if (e.key === "Backspace" && pressedKeys.size === 1) {
+          output.value = "";
+        }
+      });
+
+      window.addEventListener("keyup", (e) => {
+        let keyName = e.key;
+        if (keyName === "Meta" || keyName === "OS") keyName = "Command";
+        if (keyName === "Option") keyName = "Alt";
+
+        pressedKeys.delete(keyName);
+
+        keys.forEach((k) => {
+          if (k.dataset.key.toLowerCase() === keyName.toLowerCase()) {
+            k.classList.remove("active");
+          }
+        });
+      });
+
+      // Virtual keyboard support: click, release, double-click
+      keys.forEach((key) => {
+        key.addEventListener("mousedown", () => {
+          let val = key.dataset.key;
+
+          key.classList.add("active");
+
+          // Clear output on Backspace click
+          if (val === "Backspace") {
+            output.value = "";
+            pressedKeys.clear();
+            keys.forEach((k) => k.classList.remove("active"));
+            return;
+          }
+
+          // Add modifiers or regular keys
+          if (["Command", "Alt", "Control", "Shift"].includes(val)) {
+            pressedKeys.add(val);
+          } else {
+            pressedKeys.add(val);
+          }
+
+          const shortcutAction = checkCombination();
+
+          if (shortcutAction) {
+            output.value = `${getCurrentCombination().replace(
+              /\+/g,
+              " + "
+            )} = ${shortcutAction}`;
+          } else {
+            // Output letter with Shift or lowercase
+            if (val.length === 1 && val.match(/[a-z]/i)) {
+              output.value = getLetterOutput(val);
+            } else {
+              output.value = val;
+            }
+          }
+        });
+
+        key.addEventListener("mouseup", () => {
+          let val = key.dataset.key;
+          key.classList.remove("active");
+
+          // Remove non-modifier keys on mouseup
+          if (!["Command", "Alt", "Control", "Shift"].includes(val)) {
+            pressedKeys.delete(val);
+          }
+        });
+
+        // Toggle modifier keys on double click
+        key.addEventListener("dblclick", () => {
+          let val = key.dataset.key;
+          if (["Command", "Alt", "Control", "Shift"].includes(val)) {
+            if (pressedKeys.has(val)) {
+              pressedKeys.delete(val);
+              key.classList.remove("active");
+            } else {
+              pressedKeys.add(val);
+              key.classList.add("active");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
